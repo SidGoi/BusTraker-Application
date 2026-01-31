@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as Location from 'expo-location';
 import * as TaskManager from 'expo-task-manager';
 import OSMMap from './OSMMap';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LOCATION_TASK_NAME = 'background-bus-tracking';
 
@@ -12,12 +13,29 @@ TaskManager.defineTask(LOCATION_TASK_NAME, async ({ data, error }: any) => {
   const { locations } = data;
   if (locations && locations.length > 0) {
     const { latitude, longitude } = locations[0].coords;
-    
-    // API CALL: Send coordinates to your server here
-    // await fetch('https://your-api.com/update', { ... });
+
+    try {
+      // 1. Get the bus session to know WHICH bus ID to update
+      const session = await AsyncStorage.getItem("bus_session");
+      if (!session) return;
+      const { busId } = JSON.parse(session);
+
+      // 2. Send the update to your Vercel API
+      await fetch("https://bus-traker-backend-82zs.vercel.app/api/buses", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          busId: busId,
+          location: [latitude, longitude],
+        }),
+      });
+      
+      console.log(`Background update sent for Bus ${busId}: ${latitude}, ${longitude}`);
+    } catch (err) {
+      console.error("Background fetch failed:", err);
+    }
   }
 });
-
 export default function LiveMap() {
   const [location, setLocation] = useState<any>(null);
 

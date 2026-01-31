@@ -4,7 +4,7 @@
     "slug": "BusTraker",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/bustraker.png",
+    "icon": "./assets/images/icon.png",
     "scheme": "bustraker",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -29,7 +29,9 @@
         "ACCESS_FINE_LOCATION",
         "ACCESS_BACKGROUND_LOCATION",
         "FOREGROUND_SERVICE",
-        "FOREGROUND_SERVICE_LOCATION"
+        "FOREGROUND_SERVICE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.ACCESS_FINE_LOCATION"
       ],
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
@@ -70,7 +72,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "fa3ce49f-7e35-4d2f-b4d8-f93e5af92859"
+        "projectId": "dde280c6-fd83-4627-9775-a8e960a270c8"
       }
     }
   }

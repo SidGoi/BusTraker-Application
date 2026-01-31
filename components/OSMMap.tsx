@@ -13,7 +13,7 @@ const OSMMap = forwardRef(({ markers, onMarkerPress }: any, ref) => {
       const payload = JSON.stringify({ type: 'update', markers });
       webviewRef.current.injectJavaScript(`window.updateMarkers(${payload});`);
     }
-  };
+  };  
 
   useEffect(() => {
     if (isLoaded.current) syncMarkers();

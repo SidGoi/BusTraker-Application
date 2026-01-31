@@ -112,7 +112,7 @@ export default function LoginScreen() {
               Mission <Text className="text-blue-600">92</Text>
             </Text>
             <Text className="text-slate-400 font-bold mt-1">
-              Bus Attendance System
+              Bus Traking System
             </Text>
           </View>
 
@@ -139,7 +139,7 @@ export default function LoginScreen() {
             }}
             className={`flex-row items-center bg-white border border-slate-200 rounded-2xl px-4 py-5 mb-4 shadow-sm ${!selectedZone ? "opacity-50" : "active:bg-slate-50"}`}
           >
-            <Bus size={20} color="#2563eb" />
+            <Bus size={20} color="#2563eb" /> 
             <Text className="flex-1 ml-3 text-slate-700 font-semibold">
               {selectedBusId ? `Bus ID: ${selectedBusId}` : "Select Bus"}
             </Text>
@@ -150,6 +150,7 @@ export default function LoginScreen() {
             <Lock size={20} color="#2563eb" />
             <TextInput
               placeholder="Password"
+              placeholderTextColor="#94a3b8"
               secureTextEntry={!showPassword}
               className="flex-1 h-16 ml-3 font-semibold text-slate-800"
               value={password}
@@ -165,7 +166,6 @@ export default function LoginScreen() {
             </Pressable>
           </View>
 
-          {/* Primary Login Button */}
           <Pressable
             onPress={handleLogin}
             disabled={isLoggingIn}
@@ -214,12 +214,6 @@ export default function LoginScreen() {
                 <Text className="text-red-700 font-black">Super</Text>
               </Pressable>
             </View>
-          </View>
-
-          <View className="pb-10 mt-8 items-center">
-            <Text className="text-slate-400 text-xs font-medium">
-              Internal Use Only
-            </Text>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

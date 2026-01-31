@@ -10,7 +10,7 @@ export default function SuperAdminLogin() {
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    if (password !== "9876") return Alert.alert("Error", "Invalid Super Admin access");
+    if (password !== "496053") return Alert.alert("Error", "Invalid Super Admin access");
     await AsyncStorage.setItem("bus_session", JSON.stringify({ role: "SuperAdmin" }));
     router.replace("/(super)/dashboard");
   };
